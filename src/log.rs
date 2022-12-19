@@ -37,11 +37,11 @@ pub struct Log {
 }
 
 impl Log {
-    pub fn build<T: ToString>(kind: LogKind, node: T, message: String, time: DateTime<Utc>) -> Self {
+    pub fn build<T: ToString>(kind: LogKind, node: T, message: &str, time: DateTime<Utc>) -> Self {
         return Log{
             kind: kind,
             node: node.to_string(),
-            message: message,
+            message: message.to_string(),
             time: time,
         };
     }
