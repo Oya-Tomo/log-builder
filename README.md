@@ -42,16 +42,16 @@ let logger = Logger::build(
 );
 
 logger.output(
-    Log::build(LogKind::Info, SystemNode::PSQL, "created db and tables.", Utc::now())
+    Log::info(SystemNode::PSQL, "created db and tables.")
 );
 logger.output(
-    Log::build(LogKind::Warn, SystemNode::API, "session-key will be invalid soon.", Utc::now())
+    Log::warn(SystemNode::API, "session-key will be invalid soon.")
 );
 logger.output(
-    Log::build(LogKind::Error, SystemNode::PSQL, "insert failed.", Utc::now())
+    Log::error(SystemNode::PSQL, "insert failed.")
 );
 logger.output(
-    Log::build(LogKind::Wip, SystemNode::Server, "user input invalid.", Utc::now())
+    Log::wip(SystemNode::Server, "user input invalid.")
 );
 ```
 
