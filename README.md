@@ -56,10 +56,10 @@ logger.output(
 ```
 
 ```
-INFO  (2022-12-19 09:17:22.456770334 UTC) [PSQL] created db and tables.
-WARN  (2022-12-19 09:17:22.456846216 UTC) [API] session-key will be invalid soon.
-ERROR (2022-12-19 09:17:22.456879228 UTC) [PSQL] insert failed.
-WIP   (2022-12-19 09:17:22.456903704 UTC) [Server] user input invalid.
+INFO  (2022-12-19 13:52:41.224424546 UTC) [PSQL] created db and tables.
+WARN  (2022-12-19 13:52:41.224580092 UTC) [API] session-key will be invalid soon.
+ERROR (2022-12-19 13:52:41.224615242 UTC) [PSQL] insert failed.
+WIP   (2022-12-19 13:52:41.224646677 UTC) [Server] user input invalid.
 ```
 
 ## LICENSE : MIT

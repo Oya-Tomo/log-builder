@@ -1,5 +1,6 @@
 use chrono::{DateTime, Utc};
 
+#[derive(Clone)]
 pub enum LogKind {
     Info,
     Warn,
@@ -29,6 +30,7 @@ impl ToString for LogKind {
     }
 }
 
+#[derive(Clone)]
 pub struct Log {
     pub kind: LogKind,
     pub node: String,
@@ -37,13 +39,46 @@ pub struct Log {
 }
 
 impl Log {
-    pub fn build<T: ToString>(kind: LogKind, node: T, message: &str, time: DateTime<Utc>) -> Self {
-        return Log{
-            kind: kind,
+    pub fn info<T: ToString>(node: T, message: &str) -> Self {
+        return Log {
+            kind: LogKind::Info,
             node: node.to_string(),
             message: message.to_string(),
-            time: time,
+            time: Utc::now(),
         };
+    }
+
+    pub fn warn<T: ToString>(node: T, message: &str) -> Self {
+        return Log {
+            kind: LogKind::Warn,
+            node: node.to_string(),
+            message: message.to_string(),
+            time: Utc::now(),
+        };
+    }
+
+    pub fn error<T: ToString>(node: T, message: &str) -> Self {
+        return Log {
+            kind: LogKind::Error,
+            node: node.to_string(),
+            message: message.to_string(),
+            time: Utc::now(),
+        };
+    }
+
+    pub fn wip<T: ToString>(node: T, message: &str) -> Self {
+        return Log {
+            kind: LogKind::Wip,
+            node: node.to_string(),
+            message: message.to_string(),
+            time: Utc::now(),
+        };
+    }
+
+    pub fn set_time(self, time: DateTime<Utc>) -> Self {
+        let mut log = self.clone();
+        log.time = time;
+        return log;
     }
 
     pub fn to_string_for_file(&self) -> String {

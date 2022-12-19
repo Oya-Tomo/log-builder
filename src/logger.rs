@@ -8,6 +8,7 @@ pub enum OutputTo {
     Console, 
 }
 
+#[derive(Clone)]
 pub struct Logger {
     outputs: Vec<OutputTo>,
 }
@@ -31,5 +32,18 @@ impl Logger {
                 },
             }
         }
+    }
+
+    pub fn output_in_expect(&self, log: Log) -> String {
+        for output in self.outputs.clone() {
+            match output {
+                OutputTo::File(filename) => {
+                    let mut file = OpenOptions::new().append(true).create(true).open(filename).unwrap();
+                    file.write(log.to_string_for_file().as_bytes()).expect("File input failed");
+                },
+                OutputTo::Console => {},
+            }
+        }
+        return log.to_string_for_console();
     }
 }
